@@ -5,8 +5,7 @@ A simple REST API built with **FastAPI** and **NLP** techniques to analyze text 
 ---
 
 ## 🌐 Live Streamlit Application
-**[Click Here to view the deployed Streamlit App](https://sentimentanalysis-fastapi.streamlit.app/)** 
-*(Update this URL with your actual deployed Streamlit Community Cloud link)*
+**[Click Here to view the deployed Streamlit App](https://ashokmishra1234-potato-disease-classification-app-scviko.streamlit.app/)**
 
 ---
 
