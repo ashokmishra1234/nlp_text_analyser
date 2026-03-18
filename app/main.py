@@ -14,9 +14,9 @@ All logic is separated into:
 """
 
 from fastapi import FastAPI, HTTPException
-from app.schema import TextInput, SentimentResponse, KeywordResponse, SummaryResponse
-from app.predict import predict_sentiment, predict_keywords, predict_summary
-from app.train import download_nltk_resources
+from schema import TextInput, SentimentResponse, KeywordResponse, SummaryResponse
+from predict import predict_sentiment, predict_keywords, predict_summary
+from train import download_nltk_resources
 
 # ─── Download NLTK resources on startup ──────────────────────────────────────
 @app.on_event("startup")
