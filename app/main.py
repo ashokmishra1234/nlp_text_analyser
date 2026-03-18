@@ -14,9 +14,9 @@ All logic is separated into:
 """
 
 from fastapi import FastAPI, HTTPException
-from schema import TextInput, SentimentResponse, KeywordResponse, SummaryResponse
-from predict import predict_sentiment, predict_keywords, predict_summary
-from train import download_nltk_resources
+from app.schema import TextInput, SentimentResponse, KeywordResponse, SummaryResponse
+from app.predict import predict_sentiment, predict_keywords, predict_summary
+from app.train import download_nltk_resources
 
 # ─── Download NLTK resources on startup ──────────────────────────────────────
 download_nltk_resources()
@@ -32,6 +32,8 @@ app = FastAPI(
 # ─── ROUTES ───────────────────────────────────────────────────────────────────
 
 @app.get("/")
+@app.get("/root")
+@app.get("/Root")
 def root():
     """Health check."""
     return {
@@ -42,6 +44,7 @@ def root():
 
 
 @app.post("/sentiment", response_model=SentimentResponse)
+@app.post("/Sentiment", response_model=SentimentResponse)
 def analyze_sentiment(input_data: TextInput):
     """
     Analyze sentiment of the given text.
@@ -57,6 +60,7 @@ def analyze_sentiment(input_data: TextInput):
 
 
 @app.post("/keywords", response_model=KeywordResponse)
+@app.post("/Keywords", response_model=KeywordResponse)
 def extract_keywords(input_data: TextInput):
     """
     Extract top 5 keywords from text using TF-IDF.
@@ -77,6 +81,7 @@ def extract_keywords(input_data: TextInput):
 
 
 @app.post("/summarize", response_model=SummaryResponse)
+@app.post("/Summarize", response_model=SummaryResponse)
 def summarize_text(input_data: TextInput):
     """
     Extractive summarization — returns the 2 most important sentences.
