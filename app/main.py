@@ -18,10 +18,6 @@ from schema import TextInput, SentimentResponse, KeywordResponse, SummaryRespons
 from predict import predict_sentiment, predict_keywords, predict_summary
 from train import download_nltk_resources
 
-# ─── Download NLTK resources on startup ──────────────────────────────────────
-@app.on_event("startup")
-def startup_event():
-    download_nltk_resources()
 
 # ─── FastAPI App ──────────────────────────────────────────────────────────────
 app = FastAPI(
@@ -29,6 +25,9 @@ app = FastAPI(
     description="Analyze text using Sentiment Analysis, Keyword Extraction, and Summarization.",
     version="1.0.0",
 )
+@app.on_event("startup")
+def startup_event():
+    download_nltk_resources()
 
 
 # ─── ROUTES ───────────────────────────────────────────────────────────────────
